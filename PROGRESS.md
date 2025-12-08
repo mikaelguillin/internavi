@@ -176,3 +176,90 @@ To use the backend, users need to:
 ### Next Steps:
 
 - Ready to proceed with Step 4: Astro and Shadcn UI Setup
+
+---
+
+## Step 4: Astro and Shadcn UI Setup ✅
+
+**Completed:** Frontend foundation with Astro, React integration, Tailwind CSS, and Shadcn UI components has been set up successfully.
+
+### What was done:
+
+1. **Astro Project Initialization:**
+
+   - Initialized Astro project in `apps/frontend` with minimal template
+   - Updated `package.json` with proper workspace package name (`@internavi/frontend`)
+   - Added React integration (`@astrojs/react`)
+   - Added Tailwind CSS integration (`@astrojs/tailwind`)
+   - Configured `astro.config.mjs` with integrations and SSR output mode
+   - Created `tsconfig.json` with path aliases for monorepo packages
+
+2. **Shadcn UI Monorepo Configuration:**
+
+   - Created `components.json` in `packages/ui` with Shadcn configuration
+   - Set up Tailwind config (`tailwind.config.ts`) with Shadcn theme variables
+   - Created global CSS file (`src/styles/globals.css`) with CSS variables for theming
+   - Created utility function (`src/lib/utils.ts`) with `cn()` helper for class merging
+   - Configured TypeScript (`tsconfig.json`) with path aliases (`@/*`)
+
+3. **Package Dependencies:**
+
+   - Added Shadcn UI dependencies to `packages/ui`:
+     - `class-variance-authority`, `clsx`, `tailwind-merge` for styling utilities
+     - `lucide-react` for icons
+     - Radix UI primitives: `@radix-ui/react-dialog`, `@radix-ui/react-select`, `@radix-ui/react-slot`
+   - Added React and TypeScript as peer/dev dependencies
+   - Added `tailwindcss-animate` for animations
+
+4. **Local Package Linking:**
+
+   - Configured `apps/frontend/package.json` with workspace dependencies:
+     - `@internavi/ui: workspace:*`
+     - `@internavi/shared: workspace:*`
+   - Set up TypeScript path aliases in frontend `tsconfig.json` for package imports
+   - Created export files (`index.ts`) in both `packages/ui` and `packages/shared`
+
+5. **Shadcn Component Installation:**
+
+   - Installed core components using Shadcn CLI:
+     - **Button** - Interactive button component with variants
+     - **Card** - Container component with header, content, footer
+     - **Select** - Dropdown select component with Radix UI
+     - **Input** - Text input component
+     - **Dialog** - Modal dialog component with Radix UI
+   - All components installed in `packages/ui/src/components/ui/`
+   - Components properly exported from `packages/ui/index.ts`
+
+6. **Project Structure:**
+
+   ```
+   apps/frontend/
+     - astro.config.mjs (React + Tailwind integrations, SSR enabled)
+     - package.json (workspace dependencies configured)
+     - tsconfig.json (path aliases for monorepo packages)
+
+   packages/ui/
+     - components.json (Shadcn configuration)
+     - tailwind.config.ts (Shadcn theme configuration)
+     - src/
+       - components/ui/ (Button, Card, Select, Input, Dialog)
+       - lib/utils.ts (cn utility)
+       - styles/globals.css (CSS variables)
+     - index.ts (component exports)
+
+   packages/shared/
+     - types.ts (TypeScript interfaces)
+     - index.ts (type exports)
+   ```
+
+### Key Features:
+
+- **Monorepo Integration:** Workspace packages properly linked and importable
+- **Type Safety:** TypeScript configured across all packages
+- **Component Library:** Five core Shadcn UI components ready to use
+- **Styling System:** Tailwind CSS with Shadcn theme variables
+- **SSR Ready:** Astro configured for server-side rendering
+
+### Next Steps:
+
+- Ready to proceed with Step 5: Implement User Flow (Steps A-C)
