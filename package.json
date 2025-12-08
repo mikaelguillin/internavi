@@ -1,0 +1,16 @@
+{
+  "name": "internavi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Internavi Student Section MVP - Monorepo",
+  "scripts": {
+    "dev": "pnpm --filter @internavi/frontend dev",
+    "build": "pnpm --filter @internavi/frontend build",
+    "start": "pnpm --filter @internavi/frontend start"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
+
