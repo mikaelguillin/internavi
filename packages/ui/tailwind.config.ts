@@ -5,6 +5,7 @@ const config: Config = {
   content: [
     "./src/**/*.{ts,tsx,js,jsx,astro}",
     "./components/**/*.{ts,tsx,js,jsx}",
+    "../../apps/frontend/src/**/*.{ts,tsx,js,jsx,astro}",
   ],
   theme: {
     extend: {
@@ -54,4 +55,3 @@ const config: Config = {
 };
 
 export default config;
-

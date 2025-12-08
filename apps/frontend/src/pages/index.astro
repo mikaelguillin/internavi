@@ -1,16 +1,41 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import StudyLevelStep from '../components/StudyLevelStep.astro';
+import ChoosePathStep from '../components/ChoosePathStep';
+import '@internavi/ui/src/styles/globals.css';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+	<main class="container mx-auto px-4 py-16">
+		<!-- Hero Section -->
+		<section class="text-center mb-16">
+			<h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+				Find Your Perfect School
+			</h1>
+			<p class="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+				Discover the best educational opportunities for international students. 
+				Get personalized school recommendations based on your preferences.
+			</p>
+			<div class="flex justify-center gap-4">
+				<button
+					class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 text-lg"
+					onClick={() => {
+						document.getElementById('study-level-section')?.scrollIntoView({ behavior: 'smooth' });
+					}}
+				>
+					Get Started
+				</button>
+			</div>
+		</section>
+
+		<!-- Step 1: Choose Study Level -->
+		<section id="study-level-section" class="mb-16">
+			<StudyLevelStep />
+		</section>
+
+		<!-- Step 2: Choose Path -->
+		<section id="choose-path-section" class="mb-16">
+			<ChoosePathStep client:load />
+		</section>
+	</main>
+</Layout>

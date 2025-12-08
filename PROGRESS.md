@@ -263,3 +263,90 @@ To use the backend, users need to:
 ### Next Steps:
 
 - Ready to proceed with Step 5: Implement User Flow (Steps A-C)
+
+---
+
+## Step 5: Implement User Flow (Steps A-C) ✅
+
+**Completed:** Hero section, study level selection, and path selection components have been implemented.
+
+### What was done:
+
+1. **Layout Component (`src/layouts/Layout.astro`):**
+
+   - Created reusable layout component with proper HTML structure
+   - Includes meta tags, viewport settings, and favicon
+   - Applies base styling with Tailwind classes
+   - Supports customizable title and description props
+
+2. **Hero Section (in `index.astro`):**
+
+   - Created prominent hero section with gradient heading
+   - Added compelling tagline and description
+   - Implemented "Get Started" CTA button with smooth scroll
+   - Responsive design with centered content
+   - Uses Tailwind CSS for styling
+
+3. **Step 1: Choose Study Level (`src/components/StudyLevelStep.astro`):**
+
+   - Created three interactive buttons for study level selection:
+     - **High School** - For preparatory courses
+     - **Undergraduate** - For bachelor's degree programs
+     - **Graduate** - For master's and doctoral programs
+   - Each button has:
+     - Icon/emoji representation
+     - Title and description
+     - Hover and active states
+     - Smooth transitions
+   - Client-side JavaScript for interactivity:
+     - Selection state management
+     - Session storage persistence
+     - Auto-scroll to next section on selection
+   - Visual feedback with border and background color changes
+
+4. **Step 2: Choose Path (`src/components/ChoosePathStep.tsx`):**
+
+   - Built as **React Island** component for interactivity
+   - Split layout with two path options:
+     - **Explore All Schools** - Browse comprehensive database
+     - **Get Matched** - Take personalized quiz
+   - Features:
+     - Reads study level from session storage
+     - Dynamic messaging based on previous selection
+     - Card-based UI using Shadcn Card components
+     - Interactive selection with visual feedback
+     - Continue button that routes to appropriate page
+   - Uses React hooks (`useState`, `useEffect`) for state management
+   - Properly exported as Astro Island with `client:load` directive
+
+5. **Main Page (`src/pages/index.astro`):**
+   - Integrated all components into cohesive user flow
+   - Smooth scrolling between sections
+   - Proper component imports and CSS imports
+   - Responsive container layout
+
+### Key Features:
+
+- **Progressive Disclosure:** Users are guided through steps sequentially
+- **State Persistence:** Selections stored in sessionStorage
+- **Smooth UX:** Auto-scrolling between sections
+- **Responsive Design:** Works on mobile and desktop
+- **Component Architecture:** Mix of Astro (static) and React (interactive) components
+- **Performance:** React Island pattern for optimal loading
+
+### Component Structure:
+
+```
+src/
+  layouts/
+    Layout.astro (base layout)
+  pages/
+    index.astro (main page with hero and steps)
+  components/
+    StudyLevelStep.astro (Step 1 - Astro component)
+    ChoosePathStep.tsx (Step 2 - React Island)
+```
+
+### Next Steps:
+
+- Ready to proceed with Step 6: Data Integration (Quiz UI and Results Display)

@@ -1,0 +1,81 @@
+---
+import { Button } from '@internavi/ui';
+
+// This will be managed by client-side JavaScript for interactivity
+---
+
+<section class="max-w-4xl mx-auto">
+	<div class="text-center mb-8">
+		<h2 class="text-3xl font-bold mb-4">Step 1: Choose Your Study Level</h2>
+		<p class="text-muted-foreground">Select the level of education you're interested in pursuing</p>
+	</div>
+	
+	<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+		<button
+			id="study-level-high-school"
+			class="study-level-btn p-8 rounded-lg border-2 border-border hover:border-primary transition-all text-left group"
+			data-level="high-school"
+		>
+			<div class="text-4xl mb-4">🎓</div>
+			<h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">High School</h3>
+			<p class="text-muted-foreground">Explore high school programs and preparatory courses</p>
+		</button>
+		
+		<button
+			id="study-level-undergraduate"
+			class="study-level-btn p-8 rounded-lg border-2 border-border hover:border-primary transition-all text-left group"
+			data-level="undergraduate"
+		>
+			<div class="text-4xl mb-4">📚</div>
+			<h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Undergraduate</h3>
+			<p class="text-muted-foreground">Find bachelor's degree programs that match your goals</p>
+		</button>
+		
+		<button
+			id="study-level-graduate"
+			class="study-level-btn p-8 rounded-lg border-2 border-border hover:border-primary transition-all text-left group"
+			data-level="graduate"
+		>
+			<div class="text-4xl mb-4">🎓</div>
+			<h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Graduate</h3>
+			<p class="text-muted-foreground">Discover master's and doctoral programs</p>
+		</button>
+	</div>
+</section>
+
+<script>
+	// Handle study level selection
+	document.querySelectorAll('.study-level-btn').forEach(btn => {
+		btn.addEventListener('click', () => {
+			// Remove active state from all buttons
+			document.querySelectorAll('.study-level-btn').forEach(b => {
+				b.classList.remove('border-primary', 'bg-primary/10');
+				b.classList.add('border-border');
+			});
+			
+			// Add active state to clicked button
+			btn.classList.add('border-primary', 'bg-primary/10');
+			btn.classList.remove('border-border');
+			
+			// Store selection
+			const level = btn.getAttribute('data-level');
+			sessionStorage.setItem('studyLevel', level);
+			
+			// Scroll to next section
+			setTimeout(() => {
+				document.getElementById('choose-path-section')?.scrollIntoView({ behavior: 'smooth' });
+			}, 300);
+		});
+	});
+	
+	// Restore selection on page load
+	const savedLevel = sessionStorage.getItem('studyLevel');
+	if (savedLevel) {
+		const btn = document.querySelector(`[data-level="${savedLevel}"]`);
+		if (btn) {
+			btn.classList.add('border-primary', 'bg-primary/10');
+			btn.classList.remove('border-border');
+		}
+	}
+</script>
+
