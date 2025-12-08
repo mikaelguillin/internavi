@@ -5,6 +5,7 @@ from models import School  # Import models to register them with SQLModel
 from sqlalchemy.exc import OperationalError
 from sqlalchemy import text
 import logging
+from routers import router
 
 logger = logging.getLogger(__name__)
 
@@ -46,4 +47,7 @@ async def root():
 @app.get("/health")
 async def health():
     return {"status": "healthy"}
+
+# Include API routers
+app.include_router(router)
 

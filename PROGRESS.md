@@ -111,3 +111,68 @@ To use the backend, users need to:
 ### Next Steps:
 
 - Ready to proceed with Step 3: FastAPI API Endpoints (Core Data Services)
+
+---
+
+## Step 3: FastAPI API Endpoints (Core Data Services) ✅
+
+**Completed:** Core API endpoints for school listing and quiz matching have been implemented.
+
+### What was done:
+
+1. **Created API Router Module (`routers.py`):**
+
+   - Separated API endpoints into a dedicated router module
+   - Configured router with `/api` prefix and proper tags
+
+2. **GET /api/schools Endpoint:**
+
+   - Returns paginated list of schools with filtering and sorting
+   - **Filtering support:**
+     - `state`: Filter by state (e.g., 'CA', 'NY')
+     - `school_type`: Filter by ownership type (Public, Private)
+     - `locale`: Filter by locale type (City, Suburban, Rural, Town)
+     - `min_tuition` / `max_tuition`: Filter by tuition range
+   - **Sorting support:**
+     - `sort_by`: Field to sort by (name, tuition_in_state, admission_rate, etc.)
+     - `sort_order`: Sort direction (asc, desc)
+   - **Pagination:**
+     - `page`: Page number (default: 1)
+     - `page_size`: Items per page (default: 50, max: 100)
+   - Returns total count, pagination metadata, and school list
+
+3. **POST /api/quiz-match Endpoint:**
+
+   - Accepts five quiz inputs as query parameters or request body:
+     - `study_level`: High School, Undergraduate, Graduate
+     - `preferred_location`: State code or locale type (urban, suburban, rural, any)
+     - `budget_range`: low, medium, high
+     - `program_interest`: Program preference (any for MVP)
+     - `admission_preference`: selective, moderate, open, any
+   - **Scoring Logic:**
+     - Study Level Matching (20 points): Matches degree type to study level
+     - Location Matching (15-25 points): Matches state or locale preference
+     - Budget Matching (15-25 points): Matches tuition to budget range
+     - Program Interest (5-15 points): Checks program availability
+     - Admission Preference (10-15 points): Matches admission rate to preference
+     - Bonus Points (5 points each): High completion rate, good earnings outcomes
+   - Returns top 3-5 schools ranked by match score
+   - Includes match scores and reasons for each school
+   - Filters out schools with zero match score
+
+4. **Integration:**
+   - Added router to main FastAPI app
+   - All endpoints use dependency injection for database sessions
+   - Proper error handling with HTTPException
+   - Response models aligned with TypeScript types
+
+### API Endpoints Summary:
+
+- `GET /api/schools` - List schools with filtering, sorting, and pagination
+- `POST /api/quiz-match` - Match schools based on quiz inputs
+- `GET /` - API root endpoint
+- `GET /health` - Health check endpoint
+
+### Next Steps:
+
+- Ready to proceed with Step 4: Astro and Shadcn UI Setup
