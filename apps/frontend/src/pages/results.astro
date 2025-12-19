@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ResultsDisplay from '../components/ResultsDisplay';
+import '@internavi/ui/src/styles/globals.css';
+---
+
+<Layout title="Your School Matches - Internavi">
+	<main class="container mx-auto px-4 py-16">
+		<div class="max-w-6xl mx-auto">
+			<div class="text-center mb-12">
+				<h1 class="text-4xl font-bold mb-4">Your School Matches</h1>
+				<p class="text-xl text-muted-foreground">
+					Based on your preferences, here are your top school recommendations
+				</p>
+			</div>
+
+			<ResultsDisplay client:load />
+		</div>
+	</main>
+</Layout>
+

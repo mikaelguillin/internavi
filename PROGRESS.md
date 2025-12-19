@@ -350,3 +350,118 @@ src/
 ### Next Steps:
 
 - Ready to proceed with Step 6: Data Integration (Quiz UI and Results Display)
+
+---
+
+## Step 6: Data Integration ✅
+
+**Completed:** Quiz UI and Results Display have been implemented with full API integration.
+
+### What was done:
+
+1. **Quiz Page (`src/pages/quiz.astro`):**
+
+   - Created dedicated quiz page with centered layout
+   - Integrated QuizForm React component as Astro Island
+   - Clean, focused UI for quiz completion
+
+2. **Quiz Form Component (`src/components/QuizForm.tsx`):**
+
+   - Built comprehensive quiz form with 5 input fields:
+     - **Study Level** - Select dropdown (High School, Undergraduate, Graduate)
+     - **Preferred Location** - Select with options (Any, Urban, Suburban, Rural, or specific states)
+     - **Budget Range** - Select with three tiers (Low, Medium, High)
+     - **Program Interest** - Text input for field of study
+     - **Admission Preference** - Select (Any, Selective, Moderate, Open)
+   - Features:
+     - Uses TypeScript types from `@internavi/shared` for type safety
+     - Auto-loads saved study level from session storage
+     - Form validation (all fields required)
+     - Loading states during submission
+     - Error handling with user-friendly messages
+     - Stores quiz data and results in session storage
+     - Redirects to results page on success
+   - Uses Shadcn UI components: Card, Select, Input, Button
+   - Properly typed with `QuizMatchRequest` interface
+
+3. **API Integration:**
+
+   - Integrated with FastAPI `POST /api/quiz-match` endpoint
+   - Configurable API URL via environment variable (`PUBLIC_API_URL`)
+   - Proper error handling for API failures
+   - JSON request/response handling
+   - Results stored in session storage for client-side access
+
+4. **Results Page (`src/pages/results.astro`):**
+
+   - Created results display page
+   - Uses React Island component for client-side data loading
+   - Clean, professional layout with centered content
+
+5. **Results Display Component (`src/components/ResultsDisplay.tsx`):**
+
+   - React component that reads results from session storage
+   - Displays school cards with comprehensive information:
+     - School name and location
+     - Match score percentage
+     - Key metrics grid:
+       - Tuition (in-state and out-of-state)
+       - Admission rate
+       - Student size
+       - Completion rate
+     - Match reasons (why each school was recommended)
+     - Website link button
+   - Features:
+     - Loading state while fetching data
+     - Error handling with retry option
+     - Empty state when no results
+     - Responsive grid layout
+     - Hover effects on cards
+     - Proper formatting for currency and percentages
+   - Uses Shadcn Card components for consistent styling
+
+6. **Type Safety:**
+
+   - All components use TypeScript types from `@internavi/shared`
+   - `QuizMatchRequest` interface for form data
+   - `School` interface for school data
+   - `QuizMatchResponse` interface for API responses
+   - End-to-end type safety from backend to frontend
+
+7. **User Flow Integration:**
+   - Updated `ChoosePathStep` to properly route to quiz page
+   - Quiz form pre-fills study level from previous step
+   - Seamless flow from path selection → quiz → results
+
+### Key Features:
+
+- **Type-Safe API Integration:** Full TypeScript type checking across the stack
+- **User-Friendly Forms:** Clear labels, helpful placeholders, and validation
+- **Error Handling:** Graceful error messages and recovery options
+- **State Management:** Session storage for persistence across page navigation
+- **Responsive Design:** Works on all screen sizes
+- **Performance:** React Islands for optimal loading
+- **Accessibility:** Proper labels, semantic HTML, keyboard navigation
+
+### Component Structure:
+
+```
+src/
+  pages/
+    quiz.astro (quiz page)
+    results.astro (results page)
+  components/
+    QuizForm.tsx (quiz form React component)
+    ResultsDisplay.tsx (results display React component)
+```
+
+### API Integration:
+
+- **Endpoint:** `POST /api/quiz-match`
+- **Request:** `QuizMatchRequest` (5 fields)
+- **Response:** `QuizMatchResponse` (schools array + match scores)
+- **Error Handling:** HTTP status codes and error messages
+
+### Next Steps:
+
+- Ready to proceed with Step 7: Explore and Support Pages
