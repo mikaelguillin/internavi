@@ -34,7 +34,7 @@ async def startup_event():
 # CORS middleware for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4321", "http://localhost:3000"],  # Astro default ports
+    allow_origins=["http://localhost:4321", "http://localhost:3000", "https://internavi-frontend.vercel.app"],  # Astro default ports
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
