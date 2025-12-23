@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Button } from '@internavi/ui';
+import '@internavi/ui/src/styles/globals.css';
+---
+
+<Layout title="Support - Internavi">
+	<main class="container mx-auto px-4 py-16">
+		<div class="max-w-4xl mx-auto">
+			<div class="text-center mb-12">
+				<h1 class="text-4xl font-bold mb-4">Support & Resources</h1>
+				<p class="text-xl text-muted-foreground">
+					Get help with scholarships, visas, and more
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+				<!-- Scholarship Help -->
+				<Card class="hover:shadow-lg transition-shadow">
+					<CardHeader>
+						<div class="text-4xl mb-4">💰</div>
+						<CardTitle class="text-2xl">Scholarship Help</CardTitle>
+						<CardDescription>
+							Find and apply for scholarships to fund your education
+						</CardDescription>
+					</CardHeader>
+					<CardContent class="space-y-4">
+						<p class="text-sm text-muted-foreground">
+							We can help you discover scholarship opportunities tailored to international students. 
+							Get personalized recommendations and guidance on the application process.
+						</p>
+						<ul class="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+							<li>Merit-based scholarships</li>
+							<li>Need-based financial aid</li>
+							<li>International student grants</li>
+							<li>Application assistance</li>
+						</ul>
+						<div class="pt-4">
+							<a href="mailto:scholarships@internavi.com" class="inline-block">
+								<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full">
+									Contact Scholarship Advisor
+								</button>
+							</a>
+						</div>
+					</CardContent>
+				</Card>
+
+				<!-- Visa Guidance -->
+				<Card class="hover:shadow-lg transition-shadow">
+					<CardHeader>
+						<div class="text-4xl mb-4">🛂</div>
+						<CardTitle class="text-2xl">Visa Guidance</CardTitle>
+						<CardDescription>
+							Navigate the visa application process with confidence
+						</CardDescription>
+					</CardHeader>
+					<CardContent class="space-y-4">
+						<p class="text-sm text-muted-foreground">
+							Our visa guidance service helps international students understand requirements, 
+							prepare documentation, and successfully obtain student visas.
+						</p>
+						<ul class="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+							<li>F-1 visa application support</li>
+							<li>Document preparation checklist</li>
+							<li>Interview preparation tips</li>
+							<li>Timeline planning assistance</li>
+						</ul>
+						<div class="pt-4">
+							<a href="mailto:visas@internavi.com" class="inline-block">
+								<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full">
+									Contact Visa Advisor
+								</button>
+							</a>
+						</div>
+					</CardContent>
+				</Card>
+			</div>
+
+			<!-- Additional Resources -->
+			<Card>
+				<CardHeader>
+					<CardTitle>Additional Resources</CardTitle>
+					<CardDescription>
+						More tools and information to help you succeed
+					</CardDescription>
+				</CardHeader>
+				<CardContent>
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+						<div class="p-4 border rounded-lg">
+							<h3 class="font-semibold mb-2">📚 Study Guides</h3>
+							<p class="text-sm text-muted-foreground">
+								Access study materials and test preparation resources
+							</p>
+						</div>
+						<div class="p-4 border rounded-lg">
+							<h3 class="font-semibold mb-2">🏠 Housing</h3>
+							<p class="text-sm text-muted-foreground">
+								Find accommodation options near your chosen school
+							</p>
+						</div>
+						<div class="p-4 border rounded-lg">
+							<h3 class="font-semibold mb-2">💼 Career Services</h3>
+							<p class="text-sm text-muted-foreground">
+								Explore career opportunities and job placement assistance
+							</p>
+						</div>
+					</div>
+				</CardContent>
+			</Card>
+		</div>
+	</main>
+</Layout>
+

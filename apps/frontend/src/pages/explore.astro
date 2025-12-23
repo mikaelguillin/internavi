@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SchoolExplorer from '../components/SchoolExplorer';
+import '@internavi/ui/src/styles/globals.css';
+
+const API_BASE_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:8000';
+
+// Fetch initial school list via SSR
+let initialSchools: any[] = [];
+let totalSchools = 0;
+let error: string | null = null;
+
+try {
+	const response = await fetch(`${API_BASE_URL}/api/schools?page=1&page_size=50`);
+	if (response.ok) {
+		const data = await response.json();
+		initialSchools = data.schools || [];
+		totalSchools = data.total || 0;
+	} else {
+		error = `Failed to load schools: ${response.status}`;
+	}
+} catch (err) {
+	error = err instanceof Error ? err.message : 'Failed to load schools';
+}
+---
+
+<Layout title="Explore All Schools - Internavi">
+	<main class="container mx-auto px-4 py-16">
+		<div class="max-w-7xl mx-auto">
+			<div class="text-center mb-12">
+				<h1 class="text-4xl font-bold mb-4">Explore All Schools</h1>
+				<p class="text-xl text-muted-foreground">
+					Browse our comprehensive database of schools and find the perfect match for you
+				</p>
+			</div>
+
+			<SchoolExplorer 
+				client:load 
+				initial-schools={JSON.stringify(initialSchools)}
+				total-schools={totalSchools}
+				error={error || ''}
+			/>
+		</div>
+	</main>
+</Layout>
+

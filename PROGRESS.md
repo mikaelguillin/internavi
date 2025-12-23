@@ -465,3 +465,101 @@ src/
 ### Next Steps:
 
 - Ready to proceed with Step 7: Explore and Support Pages
+
+---
+
+## Step 7: Explore and Support Pages ✅
+
+**Completed:** Explore page with filtering/sorting and Support pages have been implemented.
+
+### What was done:
+
+1. **Explore All Schools Page (`src/pages/explore.astro`):**
+   - Created `/explore` page with SSR to fetch initial school list
+   - Fetches first 50 schools on page load for fast initial render
+   - Passes initial data to React Island component
+   - Error handling for API failures
+   - Clean, centered layout with descriptive heading
+
+2. **School Explorer Component (`src/components/SchoolExplorer.tsx`):**
+   - Built as **React Island** for interactive filtering and sorting
+   - **Filtering Controls:**
+     - State filter (dropdown with common states)
+     - School Type filter (Public/Private)
+     - Locale filter (City/Suburban/Rural/Town)
+     - Min/Max Tuition range (number inputs)
+     - Sort By field (Name, Tuition, Admission Rate, Student Size, Completion Rate)
+     - Sort Order (Ascending/Descending)
+   - **Features:**
+     - Real-time API calls on filter/sort changes
+     - Pagination support (50 schools per page)
+     - Loading states during API calls
+     - Error handling with user-friendly messages
+     - Results count display
+     - Responsive grid layout (1-3 columns based on screen size)
+   - **School Cards Display:**
+     - School name and location
+     - Key metrics: Tuition, Admission Rate, Student Size
+     - Website links
+     - Hover effects for better UX
+   - **Pagination:**
+     - Previous/Next buttons
+     - Current page indicator
+     - Disabled states for edge cases
+
+3. **Support Page (`src/pages/support.astro`):**
+   - Created comprehensive support page with two main sections:
+     - **Scholarship Help:**
+       - Information about scholarship opportunities
+       - List of available scholarship types
+       - Contact button for scholarship advisor
+       - Email link: scholarships@internavi.com
+     - **Visa Guidance:**
+       - Information about visa application process
+       - Checklist of visa types and requirements
+       - Contact button for visa advisor
+       - Email link: visas@internavi.com
+   - **Additional Resources Section:**
+     - Study Guides
+     - Housing assistance
+     - Career Services
+   - Uses Shadcn Card components for consistent styling
+   - Responsive grid layout
+
+4. **API Integration:**
+   - School Explorer uses `GET /api/schools` endpoint
+   - Supports all query parameters:
+     - Filtering: state, school_type, locale, min_tuition, max_tuition
+     - Sorting: sort_by, sort_order
+     - Pagination: page, page_size
+   - Proper error handling and loading states
+
+### Key Features:
+
+- **SSR + Client-Side Hybrid:** Initial data loaded via SSR, filtering via client-side API calls
+- **Performance:** Fast initial page load with progressive enhancement
+- **User Experience:** Intuitive filtering interface with clear feedback
+- **Responsive Design:** Works seamlessly on all device sizes
+- **Type Safety:** Full TypeScript integration with shared types
+- **Error Handling:** Graceful error messages and recovery options
+
+### Component Structure:
+
+```
+src/
+  pages/
+    explore.astro (explore page with SSR)
+    support.astro (support page)
+  components/
+    SchoolExplorer.tsx (filtering/sorting React Island)
+```
+
+### API Integration:
+
+- **Endpoint:** `GET /api/schools`
+- **Query Parameters:** state, school_type, locale, min_tuition, max_tuition, sort_by, sort_order, page, page_size
+- **Response:** `SchoolListResponse` with schools array and pagination metadata
+
+### Next Steps:
+
+- Ready to proceed with Step 8: Deployment and Cursor Configuration
