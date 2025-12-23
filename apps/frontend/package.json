@@ -14,6 +14,7 @@
     "@astrojs/react": "^3.6.1",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/vercel": "^9.0.2",
     "@internavi/shared": "workspace:*",
     "@internavi/ui": "workspace:*",
     "astro": "^5.16.4",

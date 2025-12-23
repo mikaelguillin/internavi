@@ -4,6 +4,8 @@ import tailwind from "@astrojs/tailwind";
 import { fileURLToPath } from "url";
 import path from "path";
 
+import vercel from "@astrojs/vercel";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
@@ -20,7 +22,10 @@ export default defineConfig({
       applyBaseStyles: false, // We'll import globals.css manually
     }),
   ],
-  output: "server", // Enable SSR for results page
+
+  // Enable SSR for results page
+  output: "server",
+
   vite: {
     resolve: {
       alias: {
@@ -29,4 +34,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: vercel(),
 });
